@@ -1,6 +1,2 @@
 #!/bin/bash
-<<<<<<< HEAD
 echo {a..z}{a..z} | tr\ \\n | grep -v oo
-=======
-echo {abcdefghijklnpqrstuvwxyz}{abcdefghijklmnpqrstuvwxyz}
->>>>>>> 76f7c45cddd0b4bcbb7a7d96e060aa19957ac57c
