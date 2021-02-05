@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#time
+x=0
+while [ $x -le 12 ]
+do
+    echo "Hour: $x"
+	y=1
+    while [ $y -lt 60 ]
+    do
+        echo $y
+        let y+=1
+    done
+    let x+=1
+done

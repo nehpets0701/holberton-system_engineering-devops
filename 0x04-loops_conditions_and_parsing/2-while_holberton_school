@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#printing 10 times
+x=0
+while [ $x -lt 10 ]
+do
+	echo "Holberton School"
+	let x+=1
+done
