@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#installs nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+echo "Holberton School" | sudo tee /var/www/html/index.html
+site_redirect="https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=43s"
+file_path="/etc/nginx/sites-available/default"
+append_string="rewrite ^/redirect_me $site_redirect permanent;"
+sudo sed -i "/listen \[::\]:80 default_server/a $append_string" $file_path
+append_error="error_page 404 /404.html;"
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+sed -i "/listen \[::\]:80 default_server/a $append_error" $file_path
+sudo service nginx restart
