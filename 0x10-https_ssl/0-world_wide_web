@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#subdomain info
+dig(){
+    if [ $# -eq 1 ]; then
+        str="dig $1"
+    elif [ $# -eq 2 ]; then
+        str="dig $2.$1"
+    fi
+    dig_output="$($str | grep -A1 'ANSWER SECTION:' | awk '{print $4, $5}')"
+    type="$(echo $dig_output | awk '{print $1}')"
+    destination="$(echo $dig_output | awk '{print $2}')"
+}
+
+if [ $# -eq 1 ]; then
+    subs=("www" "lb-01" "web-01" "web-02")
+    for dom in "${subs[@]}"; do
+        dig $1 $dom
+        echo "The subdomain $dom is a $type record and points to $destination"
+    done
+elif [ $# -eq 2 ]; then
+    dig $1 $2
+    echo "The subdomain $2 is a $type record and points to $destination"
+fi
