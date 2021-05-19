@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""makes list of hot topics"""
 import requests
 import time
 
