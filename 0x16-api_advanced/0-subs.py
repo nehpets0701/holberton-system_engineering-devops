@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""gets number of subs from subreddit"""
 import requests
 
 
