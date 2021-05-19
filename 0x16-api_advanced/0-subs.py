@@ -5,9 +5,12 @@ import requests
 def number_of_subscribers(subreddit):
     """gets number of subs from subreddit"""
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    r = requests.get(url, headers={'User-Agent': 'Python:sub.counter:v0.1 (by /u/01100100011011110111)'}, allow_redirects = 'false')
+    r = requests.get(url,
+                     headers={'User-Agent': 'Python:sub.counter:v0.1\
+                     (by /u/01100100011011110111)'},
+                     allow_redirects='false')
 
-    if r.status_code != 200:
-        return (0)
-
-    return r.json()['data']['subscribers']
+    try:
+        return r.json()['data']['subscribers']
+    except Exception as e:
+        return 0
